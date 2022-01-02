@@ -3,11 +3,13 @@ package com.bank.customer.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bank.customer.CustomerApplication;
 import com.bank.customer.dao.CardRepository;
 import com.bank.customer.model.Card;
 
 @Service
 public class CardService {
+	
 	CardType cardType;
 
 	@Autowired
@@ -55,13 +57,13 @@ public class CardService {
 
 		switch (cusotmerCardType) {
 		case "Gold": {
-			return cardType = new GoldCardServiceImpl();
+			return cardType = CustomerApplication.getGoldCardServiceImpl();
 		}
 		case "Platinum": {
-			return cardType = new PlatinumCardServiceImpl();
+			return cardType = CustomerApplication.getPlatinumCardServiceImpl();
 		}
 		case "Diamond": {
-			return cardType = new DiamondCardServiceImpl();
+			return cardType = CustomerApplication.getDiamondCardServiceImpl();
 		}
 		default:
 			throw new Exception("Unexpected value: ");
