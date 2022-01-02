@@ -11,9 +11,6 @@ import lombok.Data;
 public class Card {
 	
 	@Id
-	@GeneratedValue
-	private int cardId;
-	
 	private String cardType;
 	private double cardLimit;
 	private double pointPerDollar;
@@ -24,13 +21,6 @@ public class Card {
 	private double pointsCollected;
 	private String message;
 	
-	
-	public int getCardId() {
-		return cardId;
-	}
-	public void setCardId(int cardId) {
-		this.cardId = cardId;
-	}
 	public String getCardType() {
 		return cardType;
 	}

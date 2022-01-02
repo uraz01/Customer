@@ -16,20 +16,4 @@ public class CustomerApplication {
 		SpringApplication.run(CustomerApplication.class, args);
 	}
 
-	//create instance of each card and allow spring to manage it- dynamically inject as per user request
-	@Bean
-	public static CardType getGoldCardServiceImpl() {
-		return new GoldCardServiceImpl();
-		
-	}
-	@Bean
-	public static CardType getPlatinumCardServiceImpl() {
-		return new PlatinumCardServiceImpl();
-		
-	}
-	@Bean
-	public static CardType getDiamondCardServiceImpl() {
-		return new DiamondCardServiceImpl();
-		
-	}
 }

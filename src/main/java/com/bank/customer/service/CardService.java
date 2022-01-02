@@ -14,6 +14,13 @@ public class CardService {
 
 	@Autowired
 	CardRepository cardDao;
+	@Autowired
+	GoldCardServiceImpl goldCardServiceImpl;
+	@Autowired
+	PlatinumCardServiceImpl platinumCardServiceImpl;
+	@Autowired
+	DiamondCardServiceImpl diamondCardServiceImpl;
+	
 
 	public Card doTransaction(Card customerCard) throws Exception {
 		// get card type from user request
@@ -29,6 +36,7 @@ public class CardService {
 
 		// first-time
 		if (oldCardDao == null) {
+			
 			if (customerCard.getTransactAmount() <= cardType.getLimit()) {
 				Card card = new Card();
 				card.setBalance(customerCard.getTransactAmount());
@@ -36,11 +44,14 @@ public class CardService {
 				card.setCardType(cardType.getCardType());
 				card.setMessage("Success");
 				return cardDao.save(card);
+			} else {
+				customerCard.setMessage("Declined!");
+				return customerCard;
 			}
 
 		}
 		// if record exist
-		if ((customerCard.getTransactAmount() + oldCardDao.getBalance()) <= cardType.getLimit()) {
+		else if ((customerCard.getTransactAmount() + oldCardDao.getBalance()) <= cardType.getLimit()) {
 			oldCardDao.setBalance(customerCard.getTransactAmount() + oldCardDao.getBalance());
 			oldCardDao.setPointsCollected(
 					oldCardDao.getPointsCollected() + customerCard.getTransactAmount() * cardType.getPointPerDollar());
@@ -57,13 +68,13 @@ public class CardService {
 
 		switch (cusotmerCardType) {
 		case "Gold": {
-			return cardType = CustomerApplication.getGoldCardServiceImpl();
+			return cardType = goldCardServiceImpl;
 		}
 		case "Platinum": {
-			return cardType = CustomerApplication.getPlatinumCardServiceImpl();
+			return cardType = platinumCardServiceImpl;
 		}
 		case "Diamond": {
-			return cardType = CustomerApplication.getDiamondCardServiceImpl();
+			return cardType =diamondCardServiceImpl;
 		}
 		default:
 			throw new Exception("Unexpected value: ");
