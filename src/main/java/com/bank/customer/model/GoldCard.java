@@ -9,7 +9,7 @@ public class GoldCard extends Card{
 	}
 
 
-	public double getLimit() {
+	public double getCardLimit() {
 		return 100.00;
 	}
 

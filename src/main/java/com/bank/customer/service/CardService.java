@@ -33,7 +33,7 @@ public class CardService {
 		// first-time
 		if (oldCardDao == null) {
 			
-			if (transactAmount <= card.getLimit()) {
+			if (transactAmount <= card.getCardLimit()) {
 				card.setBalance(transactAmount);
 				card.setPointsCollected(transactAmount * card.getPointPerDollar());
 				card.setCardType(card.getCardType());
@@ -46,7 +46,7 @@ public class CardService {
 
 		}
 		// if record exist
-		else if ((transactAmount + oldCardDao.getBalance()) <= card.getLimit()) {
+		else if ((transactAmount + oldCardDao.getBalance()) <= card.getCardLimit()) {
 			oldCardDao.setBalance(transactAmount + oldCardDao.getBalance());
 			oldCardDao.setPointsCollected(
 					oldCardDao.getPointsCollected() + transactAmount * card.getPointPerDollar());

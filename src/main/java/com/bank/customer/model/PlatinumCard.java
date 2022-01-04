@@ -11,7 +11,7 @@ public class PlatinumCard extends Card  {
 		return "Platinum";
 	}
 	@Override
-	public double getLimit() {
+	public double getCardLimit() {
 		return 1500.0;
 	}
 	@Override

@@ -8,7 +8,7 @@ public class DiamondCard extends Card {
 		return "Diamond";
 	}
 
-	public double getLimit() {
+	public double getCardLimit() {
 		return 2000.00;
 	}
 

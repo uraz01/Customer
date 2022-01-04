@@ -47,12 +47,6 @@ public class Card {
 	public void setCardType(String cardType) {
 		this.cardType = cardType;
 	}
-	public double getLimit() {
-		return cardLimit;
-	}
-	public void setLimit(double limit) {
-		this.cardLimit = limit;
-	}
 	public double getPointPerDollar() {
 		return pointPerDollar;
 	}
