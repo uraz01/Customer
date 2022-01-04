@@ -1,6 +1,6 @@
 package com.bank.customer.service;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,8 @@ import com.bank.customer.model.Card;
 @Service
 public class CardService {
 	
-	CardType cardType;
 	@Autowired
-	CardINstanceService cardINstanceService;
+	CardInstanceService cardINstanceService;
 
 	@Autowired
 	CardRepository cardDao;
@@ -30,14 +29,14 @@ public class CardService {
 
 		Card card = cardINstanceService.getCardType(cardType);
 
-		Optional<Card> oldCardfromDao = cardDao.findById(1);
-		Card oldCardDao= oldCardfromDao.isPresent()? oldCardfromDao.get(): null;
+		Card oldCardDao = cardDao.findByCardType(card.getCardType());
 		// first-time
 		if (oldCardDao == null) {
 			
 			if (transactAmount <= card.getLimit()) {
 				card.setBalance(transactAmount);
 				card.setPointsCollected(transactAmount * card.getPointPerDollar());
+				card.setCardType(card.getCardType());
 			   cardDao.save(card);
 			} else {
 				//card.setMessage("Declined!");
@@ -51,6 +50,7 @@ public class CardService {
 			oldCardDao.setBalance(transactAmount + oldCardDao.getBalance());
 			oldCardDao.setPointsCollected(
 					oldCardDao.getPointsCollected() + transactAmount * card.getPointPerDollar());
+			
 			cardDao.save(oldCardDao);
 			//oldCardDao.setMessage("Success");
 		} else {
@@ -61,8 +61,13 @@ public class CardService {
 	}
 
 
-	public Optional<Card> getCardDetailByType(String cardType) {
-		return cardDao.findById(1);
+	public Card getCardDetailByType(String cardType) {
+		return cardDao.findByCardType(cardType);
+	}
+
+
+	public List<Card> findAll() {
+		return cardDao.findAll();
 	}
 
 	

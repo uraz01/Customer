@@ -1,11 +1,6 @@
 package com.bank.customer.model;
 
 import javax.persistence.Entity;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.bank.customer.dao.CardRepository;
 @Entity
 public class PlatinumCard extends Card  {
 

@@ -8,7 +8,7 @@ import com.bank.customer.model.GoldCard;
 import com.bank.customer.model.PlatinumCard;
 
 @Component
-public class CardINstanceService {
+public class CardInstanceService {
 
 	
 	
