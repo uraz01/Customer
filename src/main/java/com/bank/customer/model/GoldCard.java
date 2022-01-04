@@ -1,16 +1,13 @@
-package com.bank.customer.service;
+package com.bank.customer.model;
+
+import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.customer.dao.CardRepository;
-import com.bank.customer.model.Card;
-@Service
-public class GoldCardServiceImpl implements CardType {
-	
-	@Autowired
-	CardRepository cardDao;
-	
+@Entity
+public class GoldCard extends Card{
 	
 	public String getCardType() {
 		return "Gold";
@@ -31,11 +28,5 @@ public class GoldCardServiceImpl implements CardType {
 	}
 
 
-	@Override
-	public Card doTransact(Card card) {
-		
-		
-		return null;
-	}
 
 }

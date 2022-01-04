@@ -2,15 +2,22 @@ package com.bank.customer.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 import lombok.Data;
 
 @Entity
 @Data
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Card {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
 	private String cardType;
 	private double cardLimit;
 	private double pointPerDollar;
@@ -21,6 +28,19 @@ public class Card {
 	private double pointsCollected;
 	private String message;
 	
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public double getCardLimit() {
+		return cardLimit;
+	}
+	public void setCardLimit(double cardLimit) {
+		this.cardLimit = cardLimit;
+	}
 	public String getCardType() {
 		return cardType;
 	}

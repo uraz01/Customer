@@ -1,15 +1,15 @@
-package com.bank.customer.service;
+package com.bank.customer.model;
+
+import javax.persistence.Entity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bank.customer.dao.CardRepository;
-import com.bank.customer.model.Card;
-@Service
-public class PlatinumCardServiceImpl implements CardType  {
+@Entity
+public class PlatinumCard extends Card  {
 
-	@Autowired
-	CardRepository cardDao;
+	
 	
 	@Override
 	public String getCardType() {
@@ -27,12 +27,6 @@ public class PlatinumCardServiceImpl implements CardType  {
 	@Override
 	public double getPointPerDollar() {
 		return 0.5;
-	}
-	
-	@Override
-	public Card doTransact(Card card) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	
