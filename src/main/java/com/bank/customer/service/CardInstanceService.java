@@ -14,25 +14,12 @@ public class CardInstanceService {
 	
 	public Card getCardType(String customerCardType) throws Exception {
 
-		Card card;
-		switch (customerCardType) {
-		case "Gold": {
-			 card = new GoldCard();
-			 break;
-		}
-		case "Platinum": {
-			card = new PlatinumCard();
-			break;
-		}
-		case "Diamond": {
-			 card =new DiamondCard();
-			 break;
-		}
-		default:
-			throw new Exception("Unexpected value: ");
-		}
-		
-		return card;
+		return switch (customerCardType) {
+			case "Gold" -> new GoldCard();
+			case "Platinum" -> new PlatinumCard();
+			case "Diamond" -> new DiamondCard();
+			default -> throw new Exception("Unexpected value: ");
+		};
 	}
 }
 
