@@ -1,17 +1,12 @@
 package com.bank.customer.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
 @Data
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class Card {
 	
 	@Id

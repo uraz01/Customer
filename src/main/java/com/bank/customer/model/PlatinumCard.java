@@ -1,6 +1,7 @@
 package com.bank.customer.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
+
 @Entity
 public class PlatinumCard extends Card  {
 

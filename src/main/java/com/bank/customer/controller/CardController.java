@@ -19,8 +19,8 @@ public class CardController {
 	
 	
 	@PostMapping("/transact")
-	public void doTransaction(@RequestParam String cardType,  @RequestParam double transacationAmount) throws Exception {
-		cardService.doTransaction(cardType, transacationAmount);
+	public void doTransaction(@RequestParam String cardType,  @RequestParam double transactionAmount) throws Exception {
+		cardService.doTransaction(cardType, transactionAmount);
 	}
 	
 	@GetMapping("/detail")

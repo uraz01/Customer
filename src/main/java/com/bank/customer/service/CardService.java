@@ -41,7 +41,7 @@ public class CardService {
 			} else {
 				//card.setMessage("Declined!");
 				//return customerCard;
-				throw new CardException();
+				throw new CardException("Sorry, Transaction Declined!! CardLimit Exceeded!");
 			}
 
 		}
@@ -54,7 +54,7 @@ public class CardService {
 			cardDao.save(oldCardDao);
 			//oldCardDao.setMessage("Success");
 		} else {
-			throw new CardException();
+			throw new CardException("Sorry, Transaction Declined!! CardLimit Exceeded!");
 		}
 
 		

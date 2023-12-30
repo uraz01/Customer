@@ -12,10 +12,10 @@ public class CardInstanceService {
 
 	
 	
-	public Card getCardType(String cusotmerCardType) throws Exception {
+	public Card getCardType(String customerCardType) throws Exception {
 
 		Card card;
-		switch (cusotmerCardType) {
+		switch (customerCardType) {
 		case "Gold": {
 			 card = new GoldCard();
 			 break;
